@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srijayee | Luxury Brand Narrator</title>
+<meta name="description" content="Srijayee — Luxury Brand Narrator. Strategic storytelling for heritage and contemporary luxury houses.">
+
+<!-- ============================================================
+     FONTS — Cormorant Garamond (editorial serif) + Jost (utility sans)
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     TAILWIND CSS (CDN build) + custom theme tokens
+     ============================================================ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ivory:     '#F8F6F0',   // page background
+          ink:       '#1B1916',   // primary text / charcoal-black
+          beige:     '#B9A88E',   // muted accent
+          beigesoft: '#EDE7DC',   // soft tint for cards / hover fills
+          line:      '#D9D2C3',   // hairline rule colour
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans:  ['"Jost"', 'sans-serif'],
+        },
+        letterSpacing: {
+          widest2: '.28em',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  /* ---------- Base feel ---------- */
+  html, body { background-color: #F8F6F0; }
+  body { font-family: 'Jost', sans-serif; color: #1B1916; }
+
+  /* Subtle print-grain atmosphere — barely perceptible, gives the
+     ivory field a tactile, paper-like quality instead of flat digital white. */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- Editorial masthead signature: vertical spine wordmark ---------- */
+  .spine {
+    position: fixed; left: 0; top: 0; bottom: 0; width: 2.75rem;
+    display: none; align-items: center; justify-content: center;
+    border-right: 1px solid #D9D2C3; z-index: 40;
+  }
+  .spine span {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-size: 0.68rem; letter-spacing: .28em; text-transform: uppercase;
+    color: #1B1916; opacity: .55; white-space: nowrap;
+  }
+  @media (min-width: 1024px) { .spine { display: flex; } }
+
+  /* ---------- Running folio indicator (top right) ---------- */
+  .folio {
+    position: fixed; top: 1.5rem; right: 1.75rem; z-index: 40;
+    font-size: .68rem; letter-spacing: .25em; text-transform: uppercase;
+    color: #1B1916; opacity: .55; text-align: right; line-height: 1.6;
+    display: none;
+  }
+  @media (min-width: 1024px) { .folio { display: block; } }
+
+  /* ---------- Hairline utility ---------- */
+  .hr-line { border-top: 1px solid #D9D2C3; }
+
+  /* ---------- Nav transition ---------- */
+  #site-nav { transition: background-color .5s ease, border-color .5s ease; }
+  #site-nav.is-scrolled { background-color: rgba(248,246,240,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid #D9D2C3; }
+
+  /* ---------- Outlined CTA button ---------- */
+  .btn-outline {
+    display: inline-block; padding: 0.95rem 2.25rem;
+    border: 1px solid #1B1916; font-size: .72rem; letter-spacing: .25em;
+    text-transform: uppercase; color: #1B1916;
+    transition: background-color .45s ease, color .45s ease;
+  }
+  .btn-outline:hover, .btn-outline:focus-visible { background-color: #1B1916; color: #F8F6F0; }
+
+  /* ---------- Work card image treatment ---------- */
+  .work-img { filter: grayscale(.85) contrast(1.02); transition: filter .7s ease, transform .9s ease; }
+  .work-card:hover .work-img, .work-card:focus-visible .work-img { filter: grayscale(0) contrast(1.02); transform: scale(1.035); }
+  .work-card { cursor: pointer; }
+
+  /* ---------- Archive row ---------- */
+  .archive-row { transition: background-color .4s ease, padding-left .4s ease; }
+  .archive-row:hover, .archive-row:focus-visible { background-color: #EDE7DC; padding-left: 1rem; }
+  .archive-row:hover .archive-arrow, .archive-row:focus-visible .archive-arrow { transform: translateX(6px); opacity: 1; }
+  .archive-arrow { display: inline-block; transition: transform .4s ease, opacity .4s ease; opacity: 0; }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay { transition: opacity .35s ease; }
+  .modal-panel   { transition: opacity .4s ease, transform .4s ease; }
+
+  /* ---------- Accessible focus ring everywhere ---------- */
+  a:focus-visible, button:focus-visible {
+    outline: 1.5px solid #B9A88E; outline-offset: 3px;
+  }
+
+  /* ---------- Respect reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+
+<body class="relative bg-ivory text-ink antialiased">
+
+<div class="grain" aria-hidden="true"></div>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-ink focus:text-ivory focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-widest2">Skip to content</a>
+
+<!-- Vertical spine wordmark — desktop signature element -->
+<div class="spine" aria-hidden="true">
+  <span>Srijayee &nbsp;·&nbsp; Luxury Brand Narrator &nbsp;·&nbsp; Kolkata</span>
+</div>
+
+<!-- Running folio / "page" indicator — updates via scroll, desktop only -->
+<div class="folio" id="folio-indicator" aria-hidden="true">
+  Ed. 01<br><span id="folio-section">Home</span>
+</div>
+
+<!-- ============================================================
+     NAVIGATION
+     EDIT: change anchor labels/hrefs here if you rename sections
+     ============================================================ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-30">
+  <nav class="flex items-center justify-between px-6 sm:px-10 lg:px-16 py-5 lg:ml-11">
+    <a href="#home" class="font-serif text-xl tracking-wide">Srijayee<span class="text-beige">.</span></a>
+    <ul class="hidden sm:flex items-center gap-6 lg:gap-10 text-[0.68rem] tracking-widest2 uppercase">
+      <li><a href="#pivot" class="hover:text-beige transition-colors duration-300">The Pivot</a></li>
+      <li><a href="#works" class="hover:text-beige transition-colors duration-300">Selected Works</a></li>
+      <li><a href="#archive" class="hover:text-beige transition-colors duration-300">Archive</a></li>
+      <li><a href="#expertise" class="hover:text-beige transition-colors duration-300">Expertise</a></li>
+      <li><a href="#contact" class="hover:text-beige transition-colors duration-300">Contact</a></li>
+    </ul>
+    <a href="#contact" class="sm:hidden text-[0.68rem] tracking-widest2 uppercase hover:text-beige transition-colors duration-300">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="home" class="relative min-h-screen flex flex-col justify-center px-6 sm:px-10 lg:px-16 lg:ml-11 pt-28 pb-16">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-ink/55 mb-8">
+      Three Years of Digital Narrative &nbsp;·&nbsp; Kolkata, India
+    </p>
+
+    <h1 class="font-serif font-light leading-[1.05] text-[2.6rem] sm:text-6xl lg:text-7xl xl:text-8xl max-w-5xl">
+      Srijayee
+      <span class="text-beige px-3 sm:px-5 font-light">|</span>
+      <span class="italic">Luxury Brand Narrator.</span>
+    </h1>
+
+    <div class="hr-line w-24 mt-10 mb-8"></div>
+
+    <p class="max-w-xl text-sm sm:text-base tracking-wide text-ink/70 leading-relaxed uppercase">
+      Elevating brand identity through strategic storytelling and digital heritage.
+    </p>
+
+    <div class="mt-14 flex items-center gap-3 text-[0.68rem] tracking-widest2 uppercase text-ink/45">
+      <span class="block w-px h-10 bg-ink/30"></span>
+      <span>Scroll to read</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROFESSIONAL PIVOT
+       EDIT: copy below is pinned to your wording — edit freely
+       ============================================================ -->
+  <section id="pivot" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <div class="lg:col-span-4">
+        <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-6">01 — The Pivot</p>
+        <blockquote class="font-serif italic text-3xl sm:text-4xl leading-snug text-ink/90">
+          “I do not simply write; I curate identity.”
+        </blockquote>
+      </div>
+
+      <div class="lg:col-span-7 lg:col-start-6">
+        <h2 class="font-serif text-2xl sm:text-3xl mb-8 max-w-xl">
+          From Digital Precision to Luxury Narrative.
+        </h2>
+
+        <div class="space-y-6 text-[0.95rem] sm:text-base leading-[1.85] text-ink/75 max-w-2xl">
+          <p>For three years, I have navigated the intersection of language and intent, crafting high-performance content for global e-commerce giants and technology leaders. My foundation is built on the rigor of SEO strategy, the discipline of Amazon-level product narration, and a relentless focus on measurable impact.</p>
+          <p>Yet, my professional evolution has led me to a singular focus: the art of the luxury experience. Armed with a specialization in Luxury Brand Management from the University of Bocconi, I now translate my technical command of digital strategy into the nuanced storytelling required by heritage and contemporary luxury houses. I do not simply write; I curate identity, orchestrate brand voice, and bridge the space where digital accessibility meets the exclusivity of the high-end market.</p>
+        </div>
+
+        <a href="#contact" class="btn-outline mt-12">Request Portfolio Consultation</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SELECTED WORKS — editorial asymmetric grid
+       EDIT: each <article class="work-card"> is one project.
+       Replace image src, title, kicker, strategy line, and the
+       matching #modal-N content further down.
+       ============================================================ -->
+  <section id="works" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">02 — Selected Works</p>
+    <h2 class="font-serif text-3xl sm:text-4xl mb-16 max-w-xl">A Curated Gallery of Strategic Narrative.</h2>
+
+    <div class="grid lg:grid-cols-12 gap-x-8 gap-y-16">
+
+      <!-- Project 1 (large) -->
+      <article class="work-card lg:col-span-7" tabindex="0" data-modal-target="modal-1" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Voice interface concept — Alexa content development" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Voice &amp; Conversational Commerce</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Voice of Effortless Discovery</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">Translating complex product ecosystems into concise, conversational narratives that build consumer trust at scale.</p>
+      </article>
+
+      <!-- Project 2 (small) -->
+      <article class="work-card lg:col-span-5 lg:mt-20" tabindex="0" data-modal-target="modal-2" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1610189844777-cd2627dc6a40?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Fashion &amp; Heritage Retail — Taneira</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Grammar of the Drape</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">Pairing tight, scannable product copy with rich sensory narrative — the same brand voice, held across two registers.</p>
+      </article>
+
+      <!-- Project 3 (small) -->
+      <article class="work-card lg:col-span-5" tabindex="0" data-modal-target="modal-3" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop" alt="Manyavar wedding wear editorial writing sample" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Heritage &amp; Celebration Wear — Manyavar</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">Taiyaar Ho Kar Aaiye</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A campaign brief, translated into two on-tone editorials — without losing the warmth of the brand.</p>
+      </article>
+
+      <!-- Project 4 (large) -->
+      <article class="work-card lg:col-span-7 lg:mt-20" tabindex="0" data-modal-target="modal-4" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=1200&auto=format&fit=crop" alt="Fine jewelry SEO content writing sample for Tanishq and Candere" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Fine Jewelry — Tanishq &amp; Candere</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Language of Considered Purchases</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">Long-form, SEO-structured content for two jewelry houses — written to educate as much as it sells.</p>
+      </article>
+
+      <!-- Project 5 (large, alone) -->
+      <article class="work-card lg:col-span-7" tabindex="0" data-modal-target="modal-5" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop" alt="Multi-format campaign strategy and copywriting sample" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Multi-Format Campaign Strategy — Teravarna</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Many Voices of One Brand</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">Campaign strategy, social copy, crisis response, and outreach — one consistent brand voice across six formats.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ARCHIVE
+       EDIT: each row is one piece. Duplicate the <a> block to add
+       more entries as you build out your body of work.
+       ============================================================ -->
+  <section id="archive" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">03 — Archive</p>
+    <h2 class="font-serif text-3xl sm:text-4xl mb-4 max-w-xl">The Broader Body of Work.</h2>
+    <p class="text-sm text-ink/60 max-w-md mb-14">A running index of writing samples and content strategy pieces.</p>
+
+    <div class="border-t border-line">
+      <a href="https://gohackyourlife.wordpress.com/2023/05/22/e-commerce-content-writing-services/" target="_blank" rel="noopener" class="archive-row flex items-center justify-between gap-6 py-6 border-b border-line group">
+        <span class="flex items-baseline gap-6">
+          <span class="text-xs text-ink/40 font-light w-6">01</span>
+          <span class="font-serif text-lg sm:text-xl group-hover:text-beige transition-colors duration-300">E-Commerce Content Writing — Textmercato Landing Page</span>
+        </span>
+        <span class="flex items-center gap-3 shrink-0">
+          <span class="hidden sm:inline text-[0.65rem] tracking-widest2 uppercase text-ink/45">E-Commerce</span>
+          <span class="archive-arrow">→</span>
+        </span>
+      </a>
+
+      <a href="Shoppers_Stop_Writing_Sample.pdf" target="_blank" rel="noopener" class="archive-row flex items-center justify-between gap-6 py-6 border-b border-line group">
+        <span class="flex items-baseline gap-6">
+          <span class="text-xs text-ink/40 font-light w-6">02</span>
+          <span class="font-serif text-lg sm:text-xl group-hover:text-beige transition-colors duration-300">Thirty Words, No Less Style — Shoppers Stop</span>
+        </span>
+        <span class="flex items-center gap-3 shrink-0">
+          <span class="hidden sm:inline text-[0.65rem] tracking-widest2 uppercase text-ink/45">Apparel</span>
+          <span class="archive-arrow">→</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERTISE HIGHLIGHTS
+       EDIT: add/remove <span> items, separated by the middot spans
+       ============================================================ -->
+  <section id="expertise" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-20 sm:py-24 border-t border-b border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-10 text-center sm:text-left">04 — Expertise</p>
+    <div class="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-4 text-sm sm:text-base">
+      <span class="tracking-wide">Luxury Brand Management</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">SEO Strategy</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Content Curation</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">PR Specialist</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Visual Merchandising</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER / CONTACT
+       EDIT: update href values to your real LinkedIn, email, resume
+       ============================================================ -->
+  <footer id="contact" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl mb-3">Let’s begin a narrative.</h2>
+        <p class="text-sm text-ink/60 max-w-sm">For strategic collaboration, brand voice consulting, or content leadership opportunities.</p>
+      </div>
+      <div class="flex flex-col gap-3 text-sm tracking-wide">
+        <a href="https://www.linkedin.com/in/srijayee-ghosh-222011105" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">LinkedIn ↗</a>
+        <a href="mailto:srijayee1234@gmail.com" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">srijayee1234@gmail.com</a>
+        <a href="tel:+917003528577" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">+91 70035 28577</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">Resume (PDF) ↗</a>
+      </div>
+    </div>
+    <div class="hr-line mt-16 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-[0.65rem] tracking-widest2 uppercase text-ink/40">
+      <span>© 2026 Srijayee. All rights reserved.</span>
+      <span>Kolkata, India</span>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============================================================
+     PROJECT MODALS
+     EDIT: match each modal's id to its work-card's data-modal-target.
+     Five modals below, each with a real, working writing-sample PDF.
+     ============================================================ -->
+
+<!-- Modal 1 -->
+<div id="modal-1" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Voice interface concept" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Voice &amp; Conversational Commerce</p>
+      <h3 id="modal-1-title" class="font-serif italic text-3xl mb-5">The Voice of Effortless Discovery</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">Translating complex product ecosystems into concise, conversational narratives that build consumer trust at scale — written for Amazon's Alexa Content Team in Chennai.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Full-time, verifiable experience at one of the world's largest voice-commerce platforms.</li>
+        <li>Confidential by nature — Amazon's internal content isn't shareable, which is why no writing sample is linked here.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div id="modal-2" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1610189844777-cd2627dc6a40?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Fashion &amp; Heritage Retail — Taneira</p>
+      <h3 id="modal-2-title" class="font-serif italic text-3xl mb-5">The Grammar of the Drape</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">Product description copy written for Taneira (a Tata / Titan ethnic-wear label) via Textmercato. Each saree pairs a tight, scannable short description with a richer sensory narrative — written to hold one brand voice at two different lengths.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates restraint and sensory specificity — core to luxury and heritage-fashion copy.</li>
+        <li>Shows the same product written twice, at two lengths, without losing voice.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Taneira_Writing_Sample.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Writing Sample (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 -->
+<div id="modal-3" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1200&auto=format&fit=crop" alt="Manyavar wedding wear editorial writing sample" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Heritage &amp; Celebration Wear — Manyavar</p>
+      <h3 id="modal-3-title" class="font-serif italic text-3xl mb-5">Taiyaar Ho Kar Aaiye</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">Two on-tone editorials for Manyavar, India's leading celebration-wear label, built from a single creative brief — one generic brand piece, one for a specific store launch in Ranchi — via Textmercato.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Shows brief interpretation — translating brand tonality notes into finished, on-voice copy.</li>
+        <li>One brand, two scopes: generic and hyper-local, without breaking character.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Manyavar_Writing_Sample.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Writing Sample (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 4 -->
+<div id="modal-4" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-4-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=1200&auto=format&fit=crop" alt="Fine jewelry SEO content writing sample for Tanishq and Candere" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Fine Jewelry — Tanishq &amp; Candere</p>
+      <h3 id="modal-4-title" class="font-serif italic text-3xl mb-5">The Language of Considered Purchases</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">Long-form, SEO-structured content for Tanishq (Tata's premium jewelry label) and Candere — a 1,000-word bracelet guide and two jewelry category pages, written via Textmercato to educate shoppers through a higher-consideration purchase.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates sustained long-form SEO writing, not just short product copy.</li>
+        <li>Two jewelry brands, one register: informative, never pushy.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Fine_Jewelry_Writing_Sample.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Writing Sample (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 5 -->
+<div id="modal-5" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-5-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200&auto=format&fit=crop" alt="Multi-format campaign strategy and copywriting sample" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Multi-Format Campaign Strategy — Teravarna</p>
+      <h3 id="modal-5-title" class="font-serif italic text-3xl mb-5">The Many Voices of One Brand</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A single creative brief, answered across six formats — campaign strategy, Instagram and LinkedIn copy, a brand-voice response to public criticism, and an influencer outreach email — written as a Social Media Associate application exercise for Teravarna, a global art-competition platform.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates range across strategy, social copy, crisis response, and outreach in one deliverable.</li>
+        <li>Written as an application exercise, not published client work.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Teravarna_Writing_Sample.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Writing Sample (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCRIPT — nav scroll state, folio indicator, modal logic
+     ============================================================ -->
+<script>
+  // Nav background state on scroll
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Running folio indicator — tracks which section is in view
+  const folioLabel = document.getElementById('folio-section');
+  const folioEd = document.querySelector('.folio');
+  const sectionMeta = {
+    'home':      { ed: '01', label: 'Home' },
+    'pivot':     { ed: '02', label: 'The Pivot' },
+    'works':     { ed: '03', label: 'Selected Works' },
+    'archive':   { ed: '04', label: 'Archive' },
+    'expertise': { ed: '05', label: 'Expertise' },
+    'contact':   { ed: '06', label: 'Contact' },
+  };
+  const sections = document.querySelectorAll('main section, footer');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const meta = sectionMeta[entry.target.id];
+        if (meta && folioEd) {
+          folioEd.innerHTML = `Ed. ${meta.ed}<br><span id="folio-section">${meta.label}</span>`;
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  sections.forEach(s => observer.observe(s));
+
+  // Modal open/close logic
+  const cards = document.querySelectorAll('[data-modal-target]');
+  const closers = document.querySelectorAll('[data-modal-close]');
+  let lastFocused = null;
+
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    lastFocused = document.activeElement;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modal.querySelector('[data-modal-close][aria-label]');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  cards.forEach(card => {
+    const targetId = card.getAttribute('data-modal-target');
+    card.addEventListener('click', () => openModal(targetId));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(targetId);
+      }
+    });
+  });
+
+  closers.forEach(closer => {
+    closer.addEventListener('click', () => {
+      const modal = closer.closest('.modal-root');
+      if (modal) closeModal(modal);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-root:not(.hidden)').forEach(closeModal);
+    }
+  });
+</script>
+
+</body>
+</html>
