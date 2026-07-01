@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Srijayee | Luxury Brand Narrator</title>
-<meta name="description" content="Srijayee — Luxury Brand Narrator. Strategic storytelling for heritage and contemporary luxury houses.">
+<title>Srijayee | Fashion, Luxury & Lifestyle Storyteller</title>
+<meta name="description" content="Srijayee — Fashion, Luxury & Lifestyle Content Strategist. Strategic storytelling for fashion, beauty, jewelry, hospitality, and premium lifestyle brands.">
 
 <!-- ============================================================
      FONTS — Cormorant Garamond (editorial serif) + Jost (utility sans)
@@ -116,6 +116,14 @@
     html { scroll-behavior: auto; }
     * { transition-duration: 0.001ms !important; }
   }
+
+  /* ---------- Graceful image fallback ----------
+     If a hotlinked image fails to load (slow/unreliable connection),
+     JS below hides the broken <img> and applies this gradient fill
+     to its parent instead of showing a broken-icon + raw alt text. */
+  .img-fallback {
+    background: linear-gradient(145deg, #EDE7DC 0%, #D9D2C3 55%, #B9A88E 100%);
+  }
 </style>
 </head>
 
@@ -127,7 +135,7 @@
 
 <!-- Vertical spine wordmark — desktop signature element -->
 <div class="spine" aria-hidden="true">
-  <span>Srijayee &nbsp;·&nbsp; Luxury Brand Narrator &nbsp;·&nbsp; Kolkata</span>
+  <span>Srijayee &nbsp;·&nbsp; Fashion, Luxury &amp; Lifestyle Storyteller &nbsp;·&nbsp; Kolkata</span>
 </div>
 
 <!-- Running folio / "page" indicator — updates via scroll, desktop only -->
@@ -143,13 +151,16 @@
   <nav class="flex items-center justify-between px-6 sm:px-10 lg:px-16 py-5 lg:ml-11">
     <a href="#home" class="font-serif text-xl tracking-wide">Srijayee<span class="text-beige">.</span></a>
     <ul class="hidden sm:flex items-center gap-6 lg:gap-10 text-[0.68rem] tracking-widest2 uppercase">
+      <li><a href="#about" class="hover:text-beige transition-colors duration-300">About</a></li>
       <li><a href="#pivot" class="hover:text-beige transition-colors duration-300">The Pivot</a></li>
+      <li><a href="#services" class="hover:text-beige transition-colors duration-300">Services</a></li>
       <li><a href="#works" class="hover:text-beige transition-colors duration-300">Selected Works</a></li>
+      <li><a href="#spec-projects" class="hover:text-beige transition-colors duration-300">Spec Projects</a></li>
       <li><a href="#archive" class="hover:text-beige transition-colors duration-300">Archive</a></li>
       <li><a href="#expertise" class="hover:text-beige transition-colors duration-300">Expertise</a></li>
-      <li><a href="#contact" class="hover:text-beige transition-colors duration-300">Contact</a></li>
+      <li><a href="#work-with-me" class="hover:text-beige transition-colors duration-300">Work With Me</a></li>
     </ul>
-    <a href="#contact" class="sm:hidden text-[0.68rem] tracking-widest2 uppercase hover:text-beige transition-colors duration-300">Contact</a>
+    <a href="#work-with-me" class="sm:hidden text-[0.68rem] tracking-widest2 uppercase hover:text-beige transition-colors duration-300">Work With Me</a>
   </nav>
 </header>
 
@@ -160,24 +171,50 @@
        ============================================================ -->
   <section id="home" class="relative min-h-screen flex flex-col justify-center px-6 sm:px-10 lg:px-16 lg:ml-11 pt-28 pb-16">
     <p class="text-[0.7rem] tracking-widest2 uppercase text-ink/55 mb-8">
-      Three Years of Digital Narrative &nbsp;·&nbsp; Kolkata, India
+      Fashion, Luxury &amp; Lifestyle Content &nbsp;·&nbsp; Kolkata, India
     </p>
 
     <h1 class="font-serif font-light leading-[1.05] text-[2.6rem] sm:text-6xl lg:text-7xl xl:text-8xl max-w-5xl">
       Srijayee
       <span class="text-beige px-3 sm:px-5 font-light">|</span>
-      <span class="italic">Luxury Brand Narrator.</span>
+      <span class="italic">Fashion &amp; Brand Storyteller.</span>
     </h1>
 
     <div class="hr-line w-24 mt-10 mb-8"></div>
 
     <p class="max-w-xl text-sm sm:text-base tracking-wide text-ink/70 leading-relaxed uppercase">
-      Elevating brand identity through strategic storytelling and digital heritage.
+      Strategic storytelling for fashion, luxury, beauty, and premium lifestyle brands.
     </p>
 
     <div class="mt-14 flex items-center gap-3 text-[0.68rem] tracking-widest2 uppercase text-ink/45">
       <span class="block w-px h-10 bg-ink/30"></span>
       <span>Scroll to read</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       EDIT: replace the placeholder image below with a real photo.
+       Recommended: a simple, well-lit portrait or headshot, square
+       or 4:5 crop, at least 800px wide. Save it into the same
+       folder you deploy from (e.g. "srijayee-photo.jpg") and update
+       the src path below to match.
+       ============================================================ -->
+  <section id="about" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+      <div class="lg:col-span-4">
+        <div class="aspect-[4/5] bg-beigesoft border border-line overflow-hidden">
+          <img src="srijayee-photo.jpg" alt="Srijayee Ghosh" class="profile-img w-full h-full object-cover" style="filter: grayscale(0.15) contrast(1.02);">
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 lg:col-start-6">
+        <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-6">About</p>
+        <p class="font-serif text-2xl sm:text-3xl leading-snug mb-6">Hi, I'm Srijayee — a content strategist based in Kolkata, building a focused career in fashion and luxury storytelling.</p>
+        <p class="text-sm sm:text-base text-ink/70 leading-relaxed">My background spans e-commerce copywriting and AI-driven content quality at Amazon, with an independent fashion platform of my own (Ivygstyles) running since 2024. I hold a certification in Fashion &amp; Luxury Brand Management from Bocconi University, and I'm currently focused on bringing that combination — commercial writing discipline plus a genuine interest in fashion and luxury — to a brand team.</p>
+      </div>
+
     </div>
   </section>
 
@@ -205,7 +242,56 @@
           <p>Yet, my professional evolution has led me to a singular focus: the art of the luxury experience. Armed with a specialization in Luxury Brand Management from the University of Bocconi, I now translate my technical command of digital strategy into the nuanced storytelling required by heritage and contemporary luxury houses. I do not simply write; I curate identity, orchestrate brand voice, and bridge the space where digital accessibility meets the exclusivity of the high-end market.</p>
         </div>
 
-        <a href="#contact" class="btn-outline mt-12">Request Portfolio Consultation</a>
+        <a href="#work-with-me" class="btn-outline mt-12">Request Portfolio Consultation</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+       EDIT: each item is one offering. Add/remove freely —
+       this list is what shows up when someone asks "what do you do."
+       ============================================================ -->
+  <section id="services" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">02 — Services</p>
+    <h2 class="font-serif text-3xl sm:text-4xl mb-16 max-w-xl">What I Write, and Who It's For.</h2>
+
+    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Fashion &amp; Lifestyle Copywriting</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">Product pages and category copy for fashion, beauty, jewelry, and lifestyle brands — written to sell without reading like a spec sheet.</p>
+      </div>
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Brand Storytelling &amp; Case Studies</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">Long-form narrative that explains why a brand exists — heritage, positioning, and the story behind the product.</p>
+      </div>
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Email Campaigns</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">Launch sequences, restock alerts, and editorial newsletters written to be opened, not skipped.</p>
+      </div>
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Fashion &amp; Lifestyle Blogs</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">SEO-aware long-form content across fashion, beauty, jewelry, and hospitality categories — built to educate and to rank.</p>
+      </div>
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Collection Launch Copy</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">Campaign-ready copy for new drops, seasonal lines, and limited editions — from teaser to full reveal.</p>
+      </div>
+
+      <div class="border-t border-line pt-5">
+        <h3 class="font-serif italic text-xl mb-2">Social &amp; Multi-Format Campaigns</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">Caption writing, campaign concepts, and cross-platform brand voice — one strategy, several formats.</p>
+      </div>
+
+      <div class="border-t border-line pt-5 sm:col-span-2">
+        <h3 class="font-serif italic text-xl mb-2">General Content &amp; SEO Writing</h3>
+        <p class="text-sm text-ink/65 leading-relaxed">E-commerce catalogues, landing pages, and structured content at scale — the high-volume discipline that underpins all of the above.</p>
       </div>
 
     </div>
@@ -218,7 +304,7 @@
        matching #modal-N content further down.
        ============================================================ -->
   <section id="works" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
-    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">02 — Selected Works</p>
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">03 — Selected Works</p>
     <h2 class="font-serif text-3xl sm:text-4xl mb-16 max-w-xl">A Curated Gallery of Strategic Narrative.</h2>
 
     <div class="grid lg:grid-cols-12 gap-x-8 gap-y-16">
@@ -236,7 +322,7 @@
       <!-- Project 2 (small) -->
       <article class="work-card lg:col-span-5 lg:mt-20" tabindex="0" data-modal-target="modal-2" role="button" aria-haspopup="dialog">
         <div class="overflow-hidden aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1610189844777-cd2627dc6a40?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="work-img w-full h-full object-cover">
+          <img src="https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="work-img w-full h-full object-cover">
         </div>
         <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Fashion &amp; Heritage Retail — Taneira</p>
         <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Grammar of the Drape</h3>
@@ -273,6 +359,75 @@
         <p class="text-sm text-ink/65 mt-3 max-w-md">Campaign strategy, social copy, crisis response, and outreach — one consistent brand voice across six formats.</p>
       </article>
 
+      <article class="work-card lg:col-span-5 lg:mt-20" tabindex="0" data-modal-target="modal-11" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1200&auto=format&fit=crop" alt="Furla luxury watch SEO blog writing sample for Just In Time" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Luxury Watches — Just In Time</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">Time, Crafted</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A 1,500-word SEO blog on the Furla watch collection — long-form luxury storytelling for an authorized multi-brand retailer.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SPEC PROJECTS — fictional/mock brand work, clearly labeled
+       EDIT: add more <article> cards here as you build out more
+       brand concepts (Zara, COS, Aritzia, etc.) — keep the
+       "Spec Project" kicker on every card so it's never confused
+       with verified client work in Selected Works above.
+       ============================================================ -->
+  <section id="spec-projects" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">04 — Spec Projects</p>
+    <h2 class="font-serif text-3xl sm:text-4xl mb-4 max-w-xl">Brand Concepts &amp; Mock Campaigns.</h2>
+    <p class="text-sm text-ink/60 max-w-md mb-16">Speculative work for brands I haven't worked with yet — written to show range, not claimed as client history. Five different brand voices, five different formats.</p>
+
+    <div class="grid lg:grid-cols-12 gap-x-8 gap-y-16">
+      <article class="work-card lg:col-span-7" tabindex="0" data-modal-target="modal-6" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1200&auto=format&fit=crop" alt="Sezane-style cardigan product page spec project" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Spec Project — Not Affiliated with Sézane</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">Le Cardigan Romy</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">An original product page written in Sézane's warm, unhurried register — proof of voice, not a real listing.</p>
+      </article>
+
+      <article class="work-card lg:col-span-5 lg:mt-20" tabindex="0" data-modal-target="modal-7" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=1200&auto=format&fit=crop" alt="Levi's heritage denim collection story spec project" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Spec Project — Not Affiliated with Levi's</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Heirloom Run</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A fictional collection story in Levi's plain-spoken, generational register — denim as inheritance, not trend.</p>
+      </article>
+
+      <article class="work-card lg:col-span-5" tabindex="0" data-modal-target="modal-8" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=1200&auto=format&fit=crop" alt="Nike 7-day Instagram campaign spec project" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Spec Project — Not Affiliated with Nike</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">Current</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A 7-day Instagram launch arc for a fictional running shoe — short, second-person, built to build momentum.</p>
+      </article>
+
+      <article class="work-card lg:col-span-7 lg:mt-20" tabindex="0" data-modal-target="modal-9" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1200&auto=format&fit=crop" alt="Bottega Veneta product page spec project" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Spec Project — Not Affiliated with Bottega Veneta</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Voga</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A product page written in Bottega Veneta's signature restraint — letting craft speak instead of adjectives.</p>
+      </article>
+
+      <article class="work-card lg:col-span-7" tabindex="0" data-modal-target="modal-10" role="button" aria-haspopup="dialog">
+        <div class="overflow-hidden aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=1200&auto=format&fit=crop" alt="Gucci launch email spec project" class="work-img w-full h-full object-cover">
+        </div>
+        <p class="text-[0.68rem] tracking-widest2 uppercase text-ink/50 mt-6">Spec Project — Not Affiliated with Gucci</p>
+        <h3 class="font-serif italic text-2xl sm:text-3xl mt-2">The Cabinet of Wonders</h3>
+        <p class="text-sm text-ink/65 mt-3 max-w-md">A launch email in Gucci's maximalist, eclectic register — the deliberate opposite note from Bottega Veneta above.</p>
+      </article>
     </div>
   </section>
 
@@ -282,8 +437,9 @@
        more entries as you build out your body of work.
        ============================================================ -->
   <section id="archive" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
-    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">03 — Archive</p>
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">05 — Archive</p>
     <h2 class="font-serif text-3xl sm:text-4xl mb-4 max-w-xl">The Broader Body of Work.</h2>
+
     <p class="text-sm text-ink/60 max-w-md mb-14">A running index of writing samples and content strategy pieces.</p>
 
     <div class="border-t border-line">
@@ -308,6 +464,17 @@
           <span class="archive-arrow">→</span>
         </span>
       </a>
+
+      <a href="Nilkamal_Wedding_Writing_Sample.pdf" target="_blank" rel="noopener" class="archive-row flex items-center justify-between gap-6 py-6 border-b border-line group">
+        <span class="flex items-baseline gap-6">
+          <span class="text-xs text-ink/40 font-light w-6">03</span>
+          <span class="font-serif text-lg sm:text-xl group-hover:text-beige transition-colors duration-300">9 Wedding Decoration Ideas At Home — @home by Nilkamal</span>
+        </span>
+        <span class="flex items-center gap-3 shrink-0">
+          <span class="hidden sm:inline text-[0.65rem] tracking-widest2 uppercase text-ink/45">Lifestyle &amp; Home</span>
+          <span class="archive-arrow">→</span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -315,9 +482,23 @@
        EXPERTISE HIGHLIGHTS
        EDIT: add/remove <span> items, separated by the middot spans
        ============================================================ -->
-  <section id="expertise" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-20 sm:py-24 border-t border-b border-line">
-    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-10 text-center sm:text-left">04 — Expertise</p>
-    <div class="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-4 text-sm sm:text-base">
+  <section id="expertise" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-20 sm:py-24 border-t border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-10 text-center sm:text-left">06 — Expertise</p>
+
+    <!-- Education & Certifications — EDIT: keep this in sync with
+         your resume. Add new certifications here as you complete
+         them (e.g. move Product Management from "In Progress" once
+         finished). -->
+    <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-4 text-center sm:text-left">Education &amp; Certifications</p>
+    <div class="mb-16 text-center sm:text-left">
+      <p class="text-sm sm:text-base mb-2"><span class="font-medium">B.A. (Honours), Journalism &amp; Mass Communication</span> — Ashutosh College, University of Calcutta</p>
+      <p class="text-sm sm:text-base mb-2"><span class="font-medium">Management of Fashion and Luxury Companies</span> — Università Commerciale Luigi Bocconi (Bocconi University), Score: 85%</p>
+      <p class="text-sm sm:text-base mb-2"><span class="font-medium">Digital Marketing</span> — Google Digital Garage</p>
+      <p class="text-sm sm:text-base mb-2"><span class="font-medium">The Complete Copywriting Course</span> — Udemy</p>
+      <p class="text-sm sm:text-base text-ink/60"><span class="font-medium text-ink/80">Product Management Professional Certificate</span> — Coursera (In Progress)</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-4 text-sm sm:text-base mb-16">
       <span class="tracking-wide">Luxury Brand Management</span>
       <span class="text-ink/30">·</span>
       <span class="tracking-wide">SEO Strategy</span>
@@ -328,26 +509,88 @@
       <span class="text-ink/30">·</span>
       <span class="tracking-wide">Visual Merchandising</span>
     </div>
+
+    <!-- Skills & Tools — EDIT: split into confirmed vs. learning so
+         nothing here overstates what you can actually demonstrate
+         in an interview. Move items from "Currently Learning" up to
+         the main list only once you're genuinely comfortable with
+         them. -->
+    <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-6 text-center sm:text-left">Skills &amp; Tools</p>
+    <div class="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-4 text-sm sm:text-base mb-8">
+      <span class="tracking-wide">Canva</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">SEMrush</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">WordPress</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Google Workspace &amp; Excel</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Pinterest &amp; Instagram Content Tools</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">SEO Fundamentals</span>
+    </div>
+    <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-6 text-center sm:text-left">Currently Learning</p>
+    <div class="flex flex-wrap justify-center sm:justify-start gap-x-3 gap-y-4 text-sm sm:text-base text-ink/60">
+      <span class="tracking-wide">Shopify</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Meta Business Suite</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Google Analytics</span>
+      <span class="text-ink/30">·</span>
+      <span class="tracking-wide">Adobe Photoshop</span>
+    </div>
   </section>
 
   <!-- ============================================================
-       FOOTER / CONTACT
-       EDIT: update href values to your real LinkedIn, email, resume
+       AVAILABILITY
+       EDIT: this is the section recruiters scan fastest — keep it
+       short, current, and accurate. Update the moment anything here
+       changes (status, work mode, or location flexibility).
        ============================================================ -->
-  <footer id="contact" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-20">
+  <section id="availability" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-16 border-t border-b border-line">
+    <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-8 text-center sm:text-left">07 — Availability</p>
+    <div class="grid sm:grid-cols-3 gap-8 sm:gap-6">
+      <div class="text-center sm:text-left">
+        <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Status</p>
+        <p class="font-serif italic text-xl">Actively seeking full-time roles</p>
+      </div>
+      <div class="text-center sm:text-left">
+        <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Work Mode</p>
+        <p class="font-serif italic text-xl">Remote, in-office, or hybrid</p>
+      </div>
+      <div class="text-center sm:text-left">
+        <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Location</p>
+        <p class="font-serif italic text-xl">Kolkata — open to relocation</p>
+      </div>
+    </div>
+    <p class="text-sm text-ink/60 mt-10 text-center sm:text-left max-w-xl">Also open to freelance and project-based work alongside a full-time role.</p>
+  </section>
+
+  <!-- ============================================================
+       WORK WITH ME
+       EDIT: update href values if your LinkedIn, email, or phone
+       ever change.
+       ============================================================ -->
+  <section id="work-with-me" class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-28 sm:py-36 border-t border-line">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10">
       <div>
-        <h2 class="font-serif text-3xl sm:text-4xl mb-3">Let’s begin a narrative.</h2>
-        <p class="text-sm text-ink/60 max-w-sm">For strategic collaboration, brand voice consulting, or content leadership opportunities.</p>
+        <p class="text-[0.7rem] tracking-widest2 uppercase text-beige mb-4">08 — Work With Me</p>
+        <h2 class="font-serif text-3xl sm:text-4xl mb-3">Let's Begin a Narrative.</h2>
+        <p class="text-sm text-ink/60 max-w-sm">For fashion, luxury, and lifestyle brands looking for content that sounds like it belongs to you — not a template.</p>
       </div>
       <div class="flex flex-col gap-3 text-sm tracking-wide">
         <a href="https://www.linkedin.com/in/srijayee-ghosh-222011105" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">LinkedIn ↗</a>
         <a href="mailto:srijayee1234@gmail.com" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">srijayee1234@gmail.com</a>
-        <a href="tel:+917003528577" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">+91 70035 28577</a>
         <a href="resume.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 border-b border-transparent hover:border-beige w-fit">Resume (PDF) ↗</a>
       </div>
     </div>
-    <div class="hr-line mt-16 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-[0.65rem] tracking-widest2 uppercase text-ink/40">
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="px-6 sm:px-10 lg:px-16 lg:ml-11 py-10 border-t border-line">
+    <div class="flex flex-col sm:flex-row justify-between gap-2 text-[0.65rem] tracking-widest2 uppercase text-ink/40">
       <span>© 2026 Srijayee. All rights reserved.</span>
       <span>Kolkata, India</span>
     </div>
@@ -388,7 +631,7 @@
   <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
     <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
     <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
-      <img src="https://images.unsplash.com/photo-1610189844777-cd2627dc6a40?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="w-full h-full object-cover">
+      <img src="https://images.unsplash.com/photo-1610189012906-4c0aa9b9781e?q=80&w=1200&auto=format&fit=crop" alt="Saree product description writing sample for Taneira" class="w-full h-full object-cover">
     </div>
     <div class="p-8 sm:p-10">
       <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Fashion &amp; Heritage Retail — Taneira</p>
@@ -478,10 +721,164 @@
   </div>
 </div>
 
+<!-- Modal 11 -->
+<div id="modal-11" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-11-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1200&auto=format&fit=crop" alt="Furla luxury watch SEO blog writing sample for Just In Time" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Luxury Watches — Just In Time</p>
+      <h3 id="modal-11-title" class="font-serif italic text-3xl mb-5">Time, Crafted</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A 1,500-word SEO blog on the Furla watch collection, written via Textmercato for Just In Time — an authorized Indian retailer of 40+ international luxury watch brands. Built around keyword strategy, meta tags, and long-form storytelling for a genuine luxury retail client.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Sustained long-form brand storytelling for a real, named luxury retailer.</li>
+        <li>Demonstrates SEO discipline (keyword strategy, meta tags) without losing narrative voice.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Furla_JustInTime_Writing_Sample.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Writing Sample (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 6 -->
+<div id="modal-6" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-6-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1200&auto=format&fit=crop" alt="Sezane-style cardigan product page spec project" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Spec Project — Not Affiliated with Sézane</p>
+      <h3 id="modal-6-title" class="font-serif italic text-3xl mb-5">Le Cardigan Romy</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A speculative product page for an original, fictional cardigan — written to match Sézane's warm, unhurried brand voice. Not commissioned, affiliated with, or endorsed by Sézane; written purely to demonstrate range.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates the ability to study and replicate a specific, recognizable brand voice on demand.</li>
+        <li>Clearly self-initiated — useful for fashion roles where voice-matching is the actual job.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Sezane_Spec_Project.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Spec Project (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 7 -->
+<div id="modal-7" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-7-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=1200&auto=format&fit=crop" alt="Levi's heritage denim collection story spec project" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Spec Project — Not Affiliated with Levi's</p>
+      <h3 id="modal-7-title" class="font-serif italic text-3xl mb-5">The Heirloom Run</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A brand story for a fictional capsule collection, written in Levi's plain-spoken, generational register — denim framed as inheritance rather than trend. Not commissioned, affiliated with, or endorsed by Levi Strauss &amp; Co.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates heritage storytelling — restraint and generational framing instead of hype.</li>
+        <li>A different register entirely from the louder spec pieces in this section.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Levis_Spec_Project.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Spec Project (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 8 -->
+<div id="modal-8" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-8-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=1200&auto=format&fit=crop" alt="Nike 7-day Instagram campaign spec project" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Spec Project — Not Affiliated with Nike</p>
+      <h3 id="modal-8-title" class="font-serif italic text-3xl mb-5">Current</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A 7-day Instagram launch campaign for a fictional running shoe — short, second-person copy built to escalate toward a drop day. Not commissioned, affiliated with, or endorsed by Nike, Inc.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates planning a multi-day content arc, not just a single post.</li>
+        <li>Short-form, high-energy copy — a different muscle than long-form brand storytelling.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Nike_Spec_Project.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Spec Project (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 9 -->
+<div id="modal-9" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-9-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1200&auto=format&fit=crop" alt="Bottega Veneta product page spec project" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Spec Project — Not Affiliated with Bottega Veneta</p>
+      <h3 id="modal-9-title" class="font-serif italic text-3xl mb-5">The Voga</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A product page for an original, fictional bag, written in Bottega Veneta's signature register of radical restraint — craft described, nothing oversold. Not commissioned, affiliated with, or endorsed by Bottega Veneta.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates that restraint is a deliberate craft, not just an absence of adjectives.</li>
+        <li>A direct counterpoint to Gucci's maximalism in this same section.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="BottegaVeneta_Spec_Project.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Spec Project (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 10 -->
+<div id="modal-10" class="modal-root fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-10-title">
+  <div class="modal-overlay absolute inset-0 bg-ink/70 backdrop-blur-sm" data-modal-close></div>
+  <div class="modal-panel relative bg-ivory max-w-3xl w-full max-h-[90vh] overflow-y-auto grid sm:grid-cols-2">
+    <button class="absolute top-4 right-5 text-2xl font-serif text-ink/60 hover:text-ink z-10" data-modal-close aria-label="Close project details">×</button>
+    <div class="aspect-[4/5] sm:aspect-auto sm:h-full">
+      <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=1200&auto=format&fit=crop" alt="Gucci launch email spec project" class="w-full h-full object-cover">
+    </div>
+    <div class="p-8 sm:p-10">
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-beige mb-3">Spec Project — Not Affiliated with Gucci</p>
+      <h3 id="modal-10-title" class="font-serif italic text-3xl mb-5">The Cabinet of Wonders</h3>
+      <p class="text-sm text-ink/70 leading-relaxed mb-6">A launch email for a fictional collection, written in Gucci's maximalist, eclectic register — romantic, theatrical, unafraid of clashing references. Not commissioned, affiliated with, or endorsed by Gucci.</p>
+      <p class="text-[0.65rem] tracking-widest2 uppercase text-ink/45 mb-2">Why This Piece</p>
+      <ul class="text-sm text-ink/70 space-y-1 mb-8 list-disc list-inside">
+        <li>Demonstrates command of a maximalist, narrative-driven luxury voice.</li>
+        <li>Proof of range across the full spectrum of "luxury," not just one note of it.</li>
+      </ul>
+      <div class="flex flex-col gap-2 text-sm">
+        <a href="Gucci_Spec_Project.pdf" target="_blank" rel="noopener" class="hover:text-beige transition-colors duration-300 w-fit border-b border-transparent hover:border-beige">View Spec Project (PDF) ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
      SCRIPT — nav scroll state, folio indicator, modal logic
      ============================================================ -->
 <script>
+  // Graceful image fallback — if any work-card or modal image fails
+  // to load (slow/unreliable connection), hide the broken image and
+  // apply an elegant gradient fill instead of a broken-icon + alt text.
+  document.querySelectorAll('img.work-img, img.profile-img, .modal-panel img').forEach((img) => {
+    img.addEventListener('error', function () {
+      this.style.display = 'none';
+      if (this.parentElement) this.parentElement.classList.add('img-fallback');
+    }, { once: true });
+  });
+
   // Nav background state on scroll
   const nav = document.getElementById('site-nav');
   window.addEventListener('scroll', () => {
@@ -492,12 +889,16 @@
   const folioLabel = document.getElementById('folio-section');
   const folioEd = document.querySelector('.folio');
   const sectionMeta = {
-    'home':      { ed: '01', label: 'Home' },
-    'pivot':     { ed: '02', label: 'The Pivot' },
-    'works':     { ed: '03', label: 'Selected Works' },
-    'archive':   { ed: '04', label: 'Archive' },
-    'expertise': { ed: '05', label: 'Expertise' },
-    'contact':   { ed: '06', label: 'Contact' },
+    'home':          { ed: '01', label: 'Home' },
+    'about':         { ed: '01', label: 'About' },
+    'pivot':         { ed: '01', label: 'The Pivot' },
+    'services':      { ed: '02', label: 'Services' },
+    'works':         { ed: '03', label: 'Selected Works' },
+    'spec-projects': { ed: '04', label: 'Spec Projects' },
+    'archive':       { ed: '05', label: 'Archive' },
+    'expertise':     { ed: '06', label: 'Expertise' },
+    'availability':  { ed: '07', label: 'Availability' },
+    'work-with-me':  { ed: '08', label: 'Work With Me' },
   };
   const sections = document.querySelectorAll('main section, footer');
   const observer = new IntersectionObserver((entries) => {
@@ -558,6 +959,56 @@
       document.querySelectorAll('.modal-root:not(.hidden)').forEach(closeModal);
     }
   });
+
+  // ----------------------------------------------------------------
+  // Graceful handling for local file links (resume + writing-sample
+  // PDFs). If a linked file hasn't been uploaded to this folder yet,
+  // clicking it would otherwise dump the visitor on a dead "Page not
+  // found" screen. Instead: check the file exists first; if it does,
+  // open it normally; if not, show a small on-page notice and keep
+  // the visitor right where they are.
+  // ----------------------------------------------------------------
+  const toast = document.createElement('div');
+  toast.setAttribute('role', 'status');
+  toast.className = 'fixed left-1/2 -translate-x-1/2 bottom-6 z-[60] max-w-[90vw] px-5 py-3 bg-ink text-ivory text-xs tracking-wide text-center shadow-lg opacity-0 pointer-events-none transition-opacity duration-300';
+  document.body.appendChild(toast);
+  let toastTimer = null;
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.remove('opacity-0');
+    toast.classList.add('opacity-100');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0');
+    }, 3200);
+  }
+
+  const isLocalFileLink = (href) => {
+    if (!href) return false;
+    if (/^(https?:)?\/\//i.test(href)) return false; // external link, leave alone
+    if (/^(mailto:|tel:|#)/i.test(href)) return false; // not a file
+    return /\.(pdf|jpg|jpeg|png)$/i.test(href);
+  };
+
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!isLocalFileLink(href)) return;
+
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      fetch(href, { method: 'HEAD' })
+        .then((res) => {
+          if (res.ok) {
+            window.open(href, link.getAttribute('target') || '_self', 'noopener');
+          } else {
+            showToast('This file isn\u2019t uploaded yet \u2014 check back soon.');
+          }
+        })
+        .catch(() => showToast('This file isn\u2019t uploaded yet \u2014 check back soon.'));
+    });
+  });
+
 </script>
 
 </body>
